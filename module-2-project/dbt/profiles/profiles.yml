@@ -1,0 +1,14 @@
+olist_dbt:
+  outputs:
+    dev:
+      dataset: olist_analytics
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      keyfile: /workspace/gcp-key.json
+      location: asia-southeast1
+      method: service-account
+      priority: interactive
+      project: my-project-bigdata-505312
+      threads: 4
+      type: bigquery
+  target: dev

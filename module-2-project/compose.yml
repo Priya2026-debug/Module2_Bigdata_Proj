@@ -1,0 +1,26 @@
+services:
+  app:
+    build: .
+    container_name: module-2-project
+    command: tail -f /dev/null      #command that keeps running indefinitely
+
+    volumes:
+      - ./src:/module-2-project/src
+      - ./data:/module-2-project/data
+      - ./notebooks:/module-2-project/notebooks
+      - ./dbt:/module-2-project/dbt 
+      - ./dagster:/module-2-project/dagster
+      - ./dagster_home:/dagster_home
+      - ./streamlit:/module-2-project/streamlit     
+      -  "${GCP_CREDENTIALS_PATH}:/workspace/gcp-key.json:ro"
+    ports:
+      - "8501:8501"
+      - "3000:3000"
+
+    environment:
+      GOOGLE_APPLICATION_CREDENTIALS: /workspace/gcp-key.json
+      GCP_PROJECT_ID: ${GCP_PROJECT_ID}
+      GCS_DATASET_ID: ${GCS_DATASET_ID}
+      GCS_BUCKET_NAME: ${GCS_BUCKET_NAME}
+      DBT_PROFILES_DIR: /module-2-project/dbt/profiles
+      DAGSTER_HOME: /dagster_home

@@ -1,0 +1,14 @@
+pandas
+numpy
+kaggle
+kagglehub
+google-cloud-storage
+google-cloud-bigquery
+db-dtypes
+python-dotenv
+dbt-core
+dbt-bigquery
+streamlit
+dagster
+dagster-webserver
+dagster-dbt
